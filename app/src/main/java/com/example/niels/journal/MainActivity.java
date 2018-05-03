@@ -10,6 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import static android.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER;
+import static com.example.niels.journal.EntryDatabase.CONTENT;
+import static com.example.niels.journal.EntryDatabase.MOOD;
+import static com.example.niels.journal.EntryDatabase.TIMESTAMP;
+import static com.example.niels.journal.EntryDatabase.TITLE;
 
 public class MainActivity extends AppCompatActivity {
     private EntryDatabase db;
@@ -40,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        Cursor itemClicked = (Cursor) parent.getItemAtPosition(position);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("title", itemClicked.getString(itemClicked.getColumnIndex(TITLE)));
+        bundle.putString("content", itemClicked.getString(itemClicked.getColumnIndex(CONTENT)));
+        bundle.putString("mood ", itemClicked.getString(itemClicked.getColumnIndex(MOOD)));
+        bundle.putString("timestamp", itemClicked.getString(itemClicked.getColumnIndex(TIMESTAMP)));
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
         }
     }
 

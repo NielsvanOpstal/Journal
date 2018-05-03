@@ -20,7 +20,6 @@ public class EntryDatabase extends SQLiteOpenHelper {
     public static final String MOOD = "mood";
     public static final String TIMESTAMP = "timestamp";
 
-
     private EntryDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -32,6 +31,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
         db.execSQL(createDB);
         db.execSQL("INSERT INTO " + DBNAME +" (" + TITLE + ", " + CONTENT + ", " + MOOD + ") VALUES('De dag van Lucas', 'Het gaat niet zo goed', 'beetje boos')");
         db.execSQL("INSERT INTO " + DBNAME +" (" + TITLE + ", " + CONTENT + ", " + MOOD + ") VALUES('De dag van Niels', 'Het gaat wel oke', 'beetje oke')");
+
     }
 
     @Override
@@ -52,15 +52,14 @@ public class EntryDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll() {
-        SQLiteDatabase database = getWritableDatabase();
-        String query = "SELECT * FROM entries";
-        Cursor cursor = database.rawQuery(query,null);
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + DBNAME + "";
+        Cursor cursor = db.rawQuery(query,null);
         return cursor;
 
     }
 
     public void insert(JournalEntry entry) {
-        Log.d("AA", "JA!");
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO " + DBNAME +" (" + TITLE + ", " + CONTENT + ", " + MOOD + ") VALUES('" + entry.getTitle() + "', '" + entry.getContent() + "', '" + entry.getMood()  + "')");
 
@@ -68,6 +67,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     public void delete(long id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + DBNAME + " WHERE _id = " + id +";");
+        db.execSQL("DELETE FROM " + DBNAME + " WHERE _id = " + id + ";");
     }
+
 }
