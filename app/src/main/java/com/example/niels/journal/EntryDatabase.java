@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.Map;
 
@@ -59,8 +60,14 @@ public class EntryDatabase extends SQLiteOpenHelper {
     }
 
     public void insert(JournalEntry entry) {
-        SQLiteDatabase database = getWritableDatabase();
-        String query = "INSERT INTO " + DBNAME + " (" + TITLE + ", " + CONTENT + ", " + MOOD + ") VALUES (?, ?, ?);";
-        database.rawQuery(query, new String[]{entry.getTitle(), entry.getContent(), entry.getMood()});
+        Log.d("AA", "JA!");
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("INSERT INTO " + DBNAME +" (" + TITLE + ", " + CONTENT + ", " + MOOD + ") VALUES('" + entry.getTitle() + "', '" + entry.getContent() + "', '" + entry.getMood()  + "')");
+
+    }
+
+    public void delete(long id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM " + DBNAME + " WHERE _id = " + id +";");
     }
 }
