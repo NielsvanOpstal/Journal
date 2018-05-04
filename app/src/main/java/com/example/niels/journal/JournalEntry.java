@@ -8,7 +8,6 @@ public class JournalEntry implements Serializable {
     String title;
     String content;
     String mood;
-    Timestamp timestamp;
 
     public int getId() {
         return id;
@@ -26,10 +25,6 @@ public class JournalEntry implements Serializable {
         return mood;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -42,7 +37,4 @@ public class JournalEntry implements Serializable {
         this.mood = mood;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 }

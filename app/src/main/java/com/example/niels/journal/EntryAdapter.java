@@ -19,21 +19,16 @@ public class EntryAdapter extends ResourceCursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        int titleIndex = cursor.getColumnIndex(TITLE);
-        int contentIndex = cursor.getColumnIndex(CONTENT);
-        int moodIndex = cursor.getColumnIndex(MOOD);
-        int timeStampIndex = cursor.getColumnIndex(TIMESTAMP);
 
-        String title = cursor.getString(titleIndex);
-        String content = cursor.getString(contentIndex);
-        String mood = cursor.getString(moodIndex);
-        String timestamp = cursor.getString(timeStampIndex);
-
+        // Gets the text views in the entry_row.xml
         TextView listTitle = view.findViewById(R.id.listTitle);
         TextView listTimestamp = view.findViewById(R.id.listTimestamp);
+        TextView listMood = view.findViewById(R.id.listMood);
 
-        listTitle.setText(title);
-        listTimestamp.setText(timestamp);
+        // Gets the index from the cursor, gets the string from that index, set the string to the textView
+        listTitle.setText(cursor.getString(cursor.getColumnIndex(TITLE)));
+        listTimestamp.setText(cursor.getString(cursor.getColumnIndex(TIMESTAMP)));
+        listMood.setText(cursor.getString(cursor.getColumnIndex(MOOD)));
 
     }
 }

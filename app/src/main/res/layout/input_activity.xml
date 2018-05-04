@@ -10,28 +10,37 @@
         android:id="@+id/entryTitle"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_gravity="top|left"
         android:layout_weight="1"
         android:ems="10"
+        android:gravity="center"
+        android:hint="Title"
         android:inputType="textPersonName"
-        android:text="Title" />
+        android:textSize="36sp" />
 
     <EditText
         android:id="@+id/entryMood"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Mood" />
+        android:hint="Mood"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/entryContent"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="342dp"
+        android:layout_gravity="top|left"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="story" />
+        android:gravity="top|left"
+        android:hint="Story"
+        android:inputType="text"
+        android:selectAllOnFocus="false"
+        android:singleLine="false" />
 
     <Button
         android:id="@+id/entrySubmit"
