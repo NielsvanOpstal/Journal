@@ -1,4 +1,4 @@
-Friendsr
+Journal
 
 4-5-2018
 
